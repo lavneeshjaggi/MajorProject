@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 // 2. TODO - Import drawing utility here
-import { drawRect, ans } from "./utilities";
+import { drawRect, ans } from "./utilities-nitish";
 
 import "./sign-language.styles.css";
 
@@ -91,7 +91,7 @@ const SignLanguageNitish = () => {
 
   useEffect(() => {
     runCoco();
-  }, []);
+  }, [runCoco]);
 
   return (
     <div className="sign-language">
