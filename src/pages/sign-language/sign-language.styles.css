@@ -6,5 +6,10 @@
 
 .sign-language-text {
   color: #000000;
-  margin-top: 35rem;
+  margin-top: 32rem;
+}
+
+.webcam {
+  box-shadow: 0 0 3px 1px #010101;
+  margin-top: 4rem;
 }

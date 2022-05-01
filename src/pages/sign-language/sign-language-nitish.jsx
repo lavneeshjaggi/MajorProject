@@ -95,9 +95,11 @@ const SignLanguageNitish = () => {
 
   return (
     <div className="sign-language">
+      <h1>Sign Language Detection and Translation</h1>
       <Webcam
         ref={webcamRef}
         muted={true}
+        className="webcam"
         style={{
           position: "absolute",
           marginLeft: "auto",
