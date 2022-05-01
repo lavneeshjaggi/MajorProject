@@ -1,17 +1,18 @@
 // Import dependencies
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
-import { drawRect } from "./utilities";
+import { drawRect, ans } from "./utilities";
 
 import "./sign-language.styles.css";
 
 const SignLanguage = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const [answer, setAnswer] = useState(ans);
 
   // Main function
   const runCoco = async () => {
@@ -55,6 +56,8 @@ const SignLanguage = () => {
       const expanded = casted.expandDims(0);
       const obj = await net.executeAsync(expanded);
       //   console.log(obj);
+
+      setAnswer(ans);
 
       const boxes = await obj[1].array();
       const classes = await obj[2].array();
@@ -122,6 +125,7 @@ const SignLanguage = () => {
             height: 480,
           }}
         />
+        <h1 className="sign-language-text">{answer}</h1>
       </header>
     </div>
   );

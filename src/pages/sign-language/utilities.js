@@ -35,6 +35,8 @@ const labelMap = {
   5: { name: "No", color: "purple" },
 };
 
+export var ans = "Phrase";
+
 // Define a drawing function
 export const drawRect = (
   boxes,
@@ -51,7 +53,7 @@ export const drawRect = (
       const [y, x, height, width] = boxes[i];
       const text = classes[i];
 
-      console.log(labelMap[text]["name"]);
+      ans = labelMap[text]["name"];
 
       // Set styling
       ctx.strokeStyle = labelMap[text]["color"];
