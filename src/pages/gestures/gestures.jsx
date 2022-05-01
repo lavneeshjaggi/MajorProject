@@ -4,19 +4,20 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import * as fp from "fingerpose";
 import Webcam from "react-webcam";
+import { Link } from "react-router-dom";
 
 import { drawHand } from "./utilities";
-import { loveYouGesture } from './custom-gestures/LoveYou.js';
-import { okayGesture } from './custom-gestures/Okay.js';
-import { pointDownGesture } from './custom-gestures/PointDown.js';
-import { pointLeftGesture } from './custom-gestures/PointLeft.js';
-import { pointRightGesture } from './custom-gestures/PointRight.js';
-import { pointUpGesture } from './custom-gestures/PointUp.js';
-import { stopGesture } from './custom-gestures/Stop.js';
+import { loveYouGesture } from "./custom-gestures/LoveYou.js";
+import { okayGesture } from "./custom-gestures/Okay.js";
+import { pointDownGesture } from "./custom-gestures/PointDown.js";
+import { pointLeftGesture } from "./custom-gestures/PointLeft.js";
+import { pointRightGesture } from "./custom-gestures/PointRight.js";
+import { pointUpGesture } from "./custom-gestures/PointUp.js";
+import { stopGesture } from "./custom-gestures/Stop.js";
 import { thumbsUpGesture } from "./custom-gestures/ThumbsUp.js";
 import { thumbsDownGesture } from "./custom-gestures/ThumbsDown.js";
 import { victoryGesture } from "./custom-gestures/Victory.js";
-import { yesGesture } from './custom-gestures/Yes.js';
+import { yesGesture } from "./custom-gestures/Yes.js";
 
 import i_love_you from "./images/i_love_you.png";
 import okay from "./images/okay.png";
@@ -38,32 +39,32 @@ const Gestures = () => {
 
   const [emoji, setEmoji] = useState(null);
 
-  const images = { 
-    i_love_you: i_love_you, 
+  const images = {
+    i_love_you: i_love_you,
     okay: okay,
     point_down: point_down,
     point_left: point_left,
     point_right: point_right,
     point_up: point_up,
     stop: stop,
-    thumbs_up: thumbs_up, 
-    thumbs_down: thumbs_down, 
+    thumbs_up: thumbs_up,
+    thumbs_down: thumbs_down,
     victory: victory,
-    yes: yes
+    yes: yes,
   };
 
-  const names = { 
-    i_love_you: "I LOVE YOU", 
-    okay: "OKAY", 
+  const names = {
+    i_love_you: "I LOVE YOU",
+    okay: "OKAY",
     point_down: "POINT DOWN",
     point_left: "POINT LEFT",
     point_right: "POINT RIGHT",
     point_up: "POINT UP",
     stop: "STOP",
-    thumbs_up: "THUMBS UP", 
-    thumbs_down: "THUMBS DOWN", 
+    thumbs_up: "THUMBS UP",
+    thumbs_down: "THUMBS DOWN",
     victory: "VICTORY",
-    yes: "YES"
+    yes: "YES",
   };
 
   const runHandpose = async () => {
@@ -103,19 +104,14 @@ const Gestures = () => {
           thumbsUpGesture,
           thumbsDownGesture,
           victoryGesture,
-          yesGesture
+          yesGesture,
         ]);
 
         const gesture = await GE.estimate(hand[0].landmarks, 4);
 
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
-
-          const score = gesture.gestures.map(
-            (prediction) => prediction.score
-          );
-          const maxScore = score.indexOf(
-            Math.max.apply(null, score)
-          );
+          const score = gesture.gestures.map((prediction) => prediction.score);
+          const maxScore = score.indexOf(Math.max.apply(null, score));
 
           setEmoji(gesture.gestures[maxScore].name);
         }
@@ -126,26 +122,32 @@ const Gestures = () => {
     }
   };
 
-  useEffect(()=>{runHandpose()},[]);
+  useEffect(() => {
+    runHandpose();
+  }, []);
 
   return (
     <div className="gestures">
-        <h1>Gesture Detection and Translation</h1>
+      <h1>Gesture Detection and Translation</h1>
 
-        <Webcam ref={webcamRef} className="webcam" />
+      <Webcam ref={webcamRef} className="webcam" />
 
-        <canvas ref={canvasRef} className="canvas" />
+      <canvas ref={canvasRef} className="canvas" />
 
-        {emoji !== null ? (
-          <div className="translation">
-            <h3 className="name">{names[emoji]}</h3> 
+      {emoji !== null ? (
+        <div className="translation">
+          <h3 className="name">{names[emoji]}</h3>
 
-            <img src={images[emoji]} alt="emojis" className="emoji" />
-          </div>
-          ) : ( ""
-        )}
+          <img src={images[emoji]} alt="emojis" className="emoji" />
+        </div>
+      ) : (
+        ""
+      )}
+      <Link className="sections selectSections" to="/signlanguage2">
+        <h1 className="link">Sign Language Translation</h1>
+      </Link>
     </div>
   );
-}
+};
 
 export default Gestures;

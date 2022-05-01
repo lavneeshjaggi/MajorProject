@@ -11,9 +11,6 @@ const Homepage = () => (
     <Link className="sections selectSections" to="/signlanguage">
       <h1 className="name">Sign Language Translation</h1>
     </Link>
-    <Link className="sections selectSections hide" to="/signlanguage2">
-      <h1 className="name">Sign Language Translation</h1>
-    </Link>
   </div>
 );
 

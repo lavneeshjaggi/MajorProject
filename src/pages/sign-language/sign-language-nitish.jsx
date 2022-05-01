@@ -99,7 +99,7 @@ const SignLanguageNitish = () => {
       <Webcam
         ref={webcamRef}
         muted={true}
-        className="webcam"
+        className="webcam-1"
         style={{
           position: "absolute",
           marginLeft: "auto",

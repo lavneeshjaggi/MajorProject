@@ -99,7 +99,7 @@ const SignLanguage = () => {
         <Webcam
           ref={webcamRef}
           muted={true}
-          className="webcam"
+          className="webcam-2"
           style={{
             position: "absolute",
             marginLeft: "auto",
