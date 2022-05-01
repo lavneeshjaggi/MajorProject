@@ -5,6 +5,7 @@ import Homepage from "./pages/homepage/homepage.jsx";
 import Spinner from "./components/spinner/spinner.component.jsx";
 import Gestures from "./pages/gestures/gestures";
 import SignLanguage from "./pages/sign-language/sign-language";
+import SignLanguageNitish from "./pages/sign-language/sign-language-nitish";
 
 import "./App.scss";
 
@@ -14,7 +15,8 @@ const App = () => (
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route path="/gestures" element={<Gestures />} />
-        <Route path="/signlanguage" element={<SignLanguage />} />
+        <Route path="/signlanguage" element={<SignLanguageNitish />} />
+        <Route path="/signlanguage2" element={<SignLanguage />} />
       </Routes>
     </Suspense>
   </div>
