@@ -1,7 +1,9 @@
 // Import dependencies
 import React, { useRef, useState, useEffect } from "react";
+
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
+
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
 import { drawRect, ans } from "./utilities";
@@ -113,6 +115,7 @@ const SignLanguage = () => {
         />
 
         <canvas
+          className="webcam-2"
           ref={canvasRef}
           style={{
             position: "absolute",

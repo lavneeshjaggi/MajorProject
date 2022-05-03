@@ -2,6 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
+import { Link } from "react-router-dom";
+
 // 2. TODO - Import drawing utility here
 import { drawRect, ans } from "./utilities-nitish";
 
@@ -110,6 +112,7 @@ const SignLanguageNitish = () => {
       />
 
       <canvas
+        className="webcam-1"
         ref={canvasRef}
         style={{
           position: "absolute",
@@ -124,6 +127,9 @@ const SignLanguageNitish = () => {
         }}
       />
       <h1 className="sign-language-text">{answer}</h1>
+      <Link className="sections selectSections" to="/signlanguage2">
+        <h1 className="link">Sign Language Translation</h1>
+      </Link>
     </div>
   );
 };
