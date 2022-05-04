@@ -29,7 +29,6 @@ const labelMap = {
 
 export var ans = "Phrase";
 
-// Define a drawing function
 export const drawRect = (
   boxes,
   classes,
@@ -40,22 +39,18 @@ export const drawRect = (
   ctx
 ) => {
   // for (let i = 0; i <= boxes.length; i++) {
-  // console.log(scores[i]);
   if (boxes[0] && classes[0] && scores[0] > threshold) {
     console.log("Works!");
-    // Extract variables
     const [y, x, height, width] = boxes[0];
     const text = classes[0];
 
     ans = labelMap[text]["name"];
 
-    // Set styling
     ctx.strokeStyle = labelMap[text]["color"];
     ctx.lineWidth = 10;
     ctx.fillStyle = "white";
     ctx.font = "30px Arial";
 
-    // DRAW!!
     ctx.beginPath();
     ctx.fillText(
       labelMap[text]["name"] + " - " + Math.round(scores[0] * 100) / 100,
@@ -72,46 +67,3 @@ export const drawRect = (
   }
   // }
 };
-
-// export const drawRect = (
-//   boxes,
-//   classes,
-//   scores,
-//   threshold,
-//   imgWidth,
-//   imgHeight,
-//   ctx
-// ) => {
-//   // console.log(scores[0], threshold);
-//   // for (let i = 0; i <= boxes.length; i++) {
-//   if (boxes[0] && classes[0] && scores[0] > threshold) {
-//     console.log("Works");
-//     // Extract variables
-//     const [y, x, height, width] = boxes[0];
-//     const text = classes[0];
-
-//     ans = labelMap[text]["name"];
-
-//     // Set styling
-//     ctx.strokeStyle = labelMap[text]["color"];
-//     ctx.lineWidth = 10;
-//     ctx.fillStyle = "white";
-//     ctx.font = "30px Arial";
-
-//     // DRAW!!
-//     ctx.beginPath();
-//     ctx.fillText(
-//       labelMap[text]["name"] + " - " + Math.round(scores[0] * 100) / 100,
-//       x * imgWidth,
-//       y * imgHeight - 10
-//     );
-//     ctx.rect(
-//       x * imgWidth,
-//       y * imgHeight,
-//       (width * imgWidth) / 2,
-//       (height * imgHeight) / 1.5
-//     );
-//     ctx.stroke();
-//   }
-//   // }
-// };

@@ -8,7 +8,6 @@ const labelMap = {
 
 export var ans = "Phrase";
 
-// Define a drawing function
 export const drawRect = (
   boxes,
   classes,
@@ -20,19 +19,16 @@ export const drawRect = (
 ) => {
   for (let i = 0; i <= boxes.length; i++) {
     if (boxes[i] && classes[i] && scores[i] > threshold) {
-      // Extract variables
       const [y, x, height, width] = boxes[i];
       const text = classes[i];
 
       ans = labelMap[text]["name"];
 
-      // Set styling
       ctx.strokeStyle = labelMap[text]["color"];
       ctx.lineWidth = 10;
       ctx.fillStyle = "white";
       ctx.font = "30px Arial";
 
-      // DRAW!!
       ctx.beginPath();
       ctx.fillText(
         labelMap[text]["name"] + " - " + Math.round(scores[i] * 100) / 100,
